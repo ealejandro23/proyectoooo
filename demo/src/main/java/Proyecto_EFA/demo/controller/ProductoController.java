@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import jakarta.validation.Valid;
 import Proyecto_EFA.demo.model.Producto;
 import Proyecto_EFA.demo.service.ProductoService;
 
@@ -37,7 +38,7 @@ public class ProductoController {
     }
 
     @PostMapping
-    public ResponseEntity<Producto> createProducto(@RequestBody Producto producto) {
+    public ResponseEntity<Producto> createProducto(@Valid @RequestBody Producto producto) {
         Producto createdProducto = productoService.createProducto(producto);
         return ResponseEntity.status(201).body(createdProducto);
     }
